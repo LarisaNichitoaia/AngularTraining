@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Online shop</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>Products</h2>
+        </div>
+        <div>
+            <button>Shop</button>
+            <button>Add</button>
+        </div>
+    </div>
+    <div>
+    <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.category }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }} RON</td>
+            <td>></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</body>
+
+</html>
