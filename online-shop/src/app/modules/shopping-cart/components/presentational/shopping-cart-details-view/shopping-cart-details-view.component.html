@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <title>Online shop</title>
+</head>
+
+<body>
+  <div>
+    <div>
+      <h2>Shopping cart</h2>
+    </div>
+    <div>
+      <app-icon-button buttonText="Checkout"></app-icon-button>
+    </div>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products ; let i = index;">
+          <td>{{ product?.category }}</td>
+          <td>{{ product?.name }}</td>
+          <td>{{ product?.price }} RON</td>
+          <td>
+            <input type="number" [(ngModel)]="quantities[i]" min="0" step="1" />
+          </td>
+          <td><app-icon-button buttonText="Remove"></app-icon-button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
