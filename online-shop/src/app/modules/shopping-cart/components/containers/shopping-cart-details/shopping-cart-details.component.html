@@ -1,1 +1,1 @@
-<app-shopping-cart-details-view [products]="products" [quantities]="quantities" ></app-shopping-cart-details-view>
+<app-shopping-cart-details-view [productsWithQuantities]="productsWithQuantities" (removeFromCart)="removeFromCart($event)" (createOrder)="createOrder($event)"></app-shopping-cart-details-view>

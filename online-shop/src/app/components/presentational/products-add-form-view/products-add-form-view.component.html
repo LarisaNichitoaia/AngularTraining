@@ -1,0 +1,40 @@
+<head>
+    <title>Add Product</title>
+</head>
+
+<body>
+    <h1> Add product</h1>
+    <div class="form-content">
+        <form *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="productName">Name:</label>
+                <input type="text" id="productName" formControlName="name">
+            </div>
+
+            <div class="form-group">
+                <label for="productCategory">Category:</label>
+                <input type="text" id="productCategory" formControlName="category">
+            </div>
+
+            <div class="form-group">
+                <label for="productImage">Image URL:</label>
+                <input type="text" id="productImage" formControlName="image">
+            </div>
+
+            <div class="form-group">
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" formControlName="price">
+            </div>
+
+            <div class="form-group">
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" formControlName="description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="!productForm.valid">Save</button>
+                <button (click)="goBack()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>

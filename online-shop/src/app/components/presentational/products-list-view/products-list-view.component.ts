@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Product } from 'src/app/modules/shared/types/products.types';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Product } from '../../../modules/shared/types/products.types';
 
 @Component({
   selector: 'app-products-list-view',
@@ -8,4 +8,19 @@ import { Product } from 'src/app/modules/shared/types/products.types';
 })
 export class ProductsListViewComponent {
   @Input() products: Product[] | undefined;
+  @Output() productSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() shoppingCart: EventEmitter<void> = new EventEmitter<void>();
+  @Output() addProduct: EventEmitter<void> = new EventEmitter<void>();
+
+  onProductSelected(productId: string) {
+    this.productSelected.emit(productId);
+  }
+
+  toShoppingCart(){
+    this.shoppingCart.emit();
+  }
+
+  toAddProduct(){
+    this.addProduct.emit();
+  }
 }

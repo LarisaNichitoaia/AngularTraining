@@ -1,39 +1,36 @@
-<html>
-
 <head>
-    <title>Online shop</title>
+  <title>Online shop</title>
 </head>
 
 <body>
+  <div>
     <div>
-        <div>
-            <h2>Products</h2>
-        </div>
-        <div>
-            <button>Shop</button>
-            <button>Add</button>
-        </div>
+      <h2>Products</h2>
     </div>
     <div>
+      <app-icon-button buttonText="Add" (buttonClick)="toAddProduct()"></app-icon-button>
+      <app-icon-button buttonText="Shop" (buttonClick)="toShoppingCart()"></app-icon-button>
+    </div>
+  </div>
+  <div>
     <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products">
-            <td>{{ product.category }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }} RON</td>
-            <td>></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.category }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price | currency:'RON' }}</td>
+          <td><app-icon-button buttonText="Details" (buttonClick)="onProductSelected(product.id)"></app-icon-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
-
-</html>

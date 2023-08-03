@@ -1,5 +1,3 @@
-<html>
-
 <head>
   <title>Online shop</title>
 </head>
@@ -10,7 +8,7 @@
       <h2>Shopping cart</h2>
     </div>
     <div>
-      <app-icon-button buttonText="Checkout"></app-icon-button>
+      <app-icon-button buttonText="Checkout" (buttonClick)="toCreateOrder('de96921d-2f8d-46e7-8061-31468180de96')"></app-icon-button>
     </div>
   </div>
   <div>
@@ -25,18 +23,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products ; let i = index;">
-          <td>{{ product?.category }}</td>
-          <td>{{ product?.name }}</td>
-          <td>{{ product?.price }} RON</td>
+        <tr *ngFor="let product of productsWithQuantities">
+          <td>{{ product.category }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }} RON</td>
           <td>
-            <input type="number" [(ngModel)]="quantities[i]" min="0" step="1" />
+            <input type="number" [(ngModel)]="product.quantity" min="0" step="1" />
           </td>
-          <td><app-icon-button buttonText="Remove"></app-icon-button></td>
+          <td><app-icon-button buttonText="Remove" (buttonClick)="removeProductFromCart(product.id)"></app-icon-button></td>
         </tr>
       </tbody>
     </table>
   </div>
 </body>
-
-</html>

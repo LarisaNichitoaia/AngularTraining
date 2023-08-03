@@ -1,1 +1,1 @@
-<app-products-list-view [products]="products" ></app-products-list-view>
+<app-products-list-view [products]="products" (productSelected)="navigateToProductDetail($event)" (shoppingCart)="navigateToShoppingCart()" (addProduct)="navigateToAddForm()"></app-products-list-view>

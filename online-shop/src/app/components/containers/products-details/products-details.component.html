@@ -1,1 +1,1 @@
-<app-products-details-view [product]="product"></app-products-details-view>
+<app-products-details-view [product]="product" (productToBuy)="toBuyProduct($event)" (deleteProduct)="deleteProductFromDatabase()" (productForm)="productForm()"></app-products-details-view>

@@ -4,6 +4,7 @@ import { ShoppingCartDetailsComponent } from './components/containers/shopping-c
 import { ShoppingCartDetailsViewComponent } from './components/presentational/shopping-cart-details-view/shopping-cart-details-view.component';
 import { IconButtonComponent } from '../shared/components/presentational/icon-button/icon-button.component';
 import { FormsModule } from '@angular/forms';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     ShoppingCartDetailsComponent
-  ]
+  ],
+  providers: [ShoppingCartService]
 })
 export class ShoppingCartModule { }

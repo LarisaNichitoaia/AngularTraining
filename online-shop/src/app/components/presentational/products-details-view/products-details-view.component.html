@@ -1,5 +1,3 @@
-<html>
-
 <head>
     <title>Online shop</title>
 </head>
@@ -7,28 +5,31 @@
 <body>
     <div class = "header">
         <div class = "header">
-            <h1>Product: {{product?.name}}</h1>
+            <h1 *ngIf="product">Product: {{product.name}}</h1>
         </div>
         <div class = "header">
-            <button>Edit</button>
-            <button id="button_delete">Delete</button>
+
+            <app-icon-button buttonText="Edit" (buttonClick)="toProductsForm()"></app-icon-button>
+            <app-icon-button id="button_delete" buttonText="Delete" (buttonClick)="toDeleteProduct()"></app-icon-button>
         </div>
     </div>
-    <div class="container_details">
+    <div *ngIf="product" class="container_details">
         <div class="informational_details">Name:</div>
-        <div>{{ product?.name }}</div>
-        <img class="container_image" src="{{product?.image}}"/>
+        <div>{{ product.name }}</div>
+        <img class="container_image" [src]="product.image"/>
 
         <div class="informational_details">Category:</div>
-        <div>{{ product?.category }}</div>
+        <div>{{ product.category }}</div>
         
 
         <div class="informational_details">Price:</div>
-        <div>{{ product?.price }} RON</div>
+        <div>{{ product.price | currency:'RON' }}</div>
 
         <div class="informational_details">Description:</div>
-        <div class="container_description">{{ product?.description }}</div>
+        <div class="container_description">{{ product.description }}</div>
+    </div>
+    <div class="container_buy">
+        <input type="number" [(ngModel)]="quantity" min="1" step="1" (ngModelChange)="onQuantityChange($event)">
+        <app-icon-button buttonText="Buy" (buttonClick)="onProductBuy()"></app-icon-button>
     </div>
 </body>
-
-</html>
