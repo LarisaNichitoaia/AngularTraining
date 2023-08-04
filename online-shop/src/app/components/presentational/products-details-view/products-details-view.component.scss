@@ -9,10 +9,6 @@
         color: #333;
     }
 
-    #button_delete {
-        background-color: rgb(231, 70, 70);
-    }
-
     button {
         padding: 1vh 1.5vw;
         background-color: #007bff;
@@ -22,7 +18,14 @@
         cursor: pointer;
         margin-right: 5%;
     }
+    
+    app-icon-button{
+        margin-right: 5%;
+    }
 
+    ::ng-deep app-icon-button[id="button_delete"] button{
+        background-color: rgb(231, 70, 70);
+    }
 }
 
 .container_details {
@@ -51,5 +54,13 @@
         word-wrap: break-word;
         grid-column-start: 2;
         grid-column-end: 4;
+    }
+}
+
+.container_buy{
+    display: flex;
+    justify-content: center;
+    input, app-icon-button{
+        margin: 1%;
     }
 }

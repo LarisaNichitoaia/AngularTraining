@@ -1,5 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
-import { Product } from 'src/app/modules/shared/types/products.types';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { ProductWithQuantities } from 'src/app/modules/shared/types/products-with-quantities.types';
 
 @Component({
   selector: 'app-shopping-cart-details-view',
@@ -7,6 +7,7 @@ import { Product } from 'src/app/modules/shared/types/products.types';
   styleUrls: ['./shopping-cart-details-view.component.scss']
 })
 export class ShoppingCartDetailsViewComponent {
-  @Input() products: Product[] | undefined;
-  @Input() quantities!: number[];
+  @Input() productsWithQuantities: ProductWithQuantities[] | undefined;
+  @Output() removeFromCart: EventEmitter<string> = new EventEmitter<string>();
+  @Output() createOrder: EventEmitter<string> = new EventEmitter<string>();
 }

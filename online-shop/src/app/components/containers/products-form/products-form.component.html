@@ -1,0 +1,3 @@
+<ng-container *ngIf="product">
+    <app-products-form-view [productForm]="productForm" [product]="product" (updateProduct)="updateProduct($event)" (back)="onBack()"></app-products-form-view>
+</ng-container>
