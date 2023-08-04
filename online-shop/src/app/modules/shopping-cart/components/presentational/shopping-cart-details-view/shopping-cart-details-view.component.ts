@@ -10,12 +10,4 @@ export class ShoppingCartDetailsViewComponent {
   @Input() productsWithQuantities: ProductWithQuantities[] | undefined;
   @Output() removeFromCart: EventEmitter<string> = new EventEmitter<string>();
   @Output() createOrder: EventEmitter<string> = new EventEmitter<string>();
-
-  removeProductFromCart(productId: string) {
-    this.removeFromCart.emit(productId);
-  }
-
-  toCreateOrder(customerId: string) {
-    this.createOrder.emit(customerId);
-  }
 }

@@ -8,8 +8,8 @@
       <h2>Products</h2>
     </div>
     <div>
-      <app-icon-button buttonText="Add" (buttonClick)="toAddProduct()"></app-icon-button>
-      <app-icon-button buttonText="Shop" (buttonClick)="toShoppingCart()"></app-icon-button>
+      <app-icon-button buttonText="Add" (buttonClick)="this.addProduct.emit()"></app-icon-button>
+      <app-icon-button buttonText="Shop" (buttonClick)="this.shoppingCart.emit()"></app-icon-button>
     </div>
   </div>
   <div>
@@ -27,7 +27,7 @@
           <td>{{ product.category }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.price | currency:'RON' }}</td>
-          <td><app-icon-button buttonText="Details" (buttonClick)="onProductSelected(product.id)"></app-icon-button>
+          <td><app-icon-button buttonText="Details" (buttonClick)="this.productSelected.emit(product.id)"></app-icon-button>
           </td>
         </tr>
       </tbody>

@@ -1,9 +1,3 @@
-header {
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: left;
-}
-
 .form-content {
     display: flex;
     justify-content: center;
@@ -19,21 +13,19 @@ header {
     }
 }
 
-label {
+.label {
     font-weight: bold;
     display: block;
     margin: 2vh;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
+.input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
-button {
+.button {
     padding: 8px 15px;
     background-color: #007bff;
     color: white;

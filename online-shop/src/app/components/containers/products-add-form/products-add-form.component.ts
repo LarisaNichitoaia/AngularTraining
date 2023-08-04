@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { takeWhile } from 'rxjs';
+import { AppRoutes } from 'src/app/modules/shared/routs/route.enum';
 import { Product } from 'src/app/modules/shared/types/products.types';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,16 +13,28 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductsAddFormComponent {
   isAlive: boolean = true;
-  constructor(private router: Router, private productService: ProductsService) { }
+  constructor(private router: NavigationService, private productService: ProductsService) { }
 
-  createProduct(addProduct: Product) {
+  productForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    image: new FormControl(''),
+    price: new FormControl(0, [
+      Validators.required,
+      Validators.pattern("^[0-9]+$"),
+    ]),
+    description: new FormControl('', Validators.required),
+  })
+
+  onCreateProduct(addProduct: Product) {
+    addProduct.id='';
     this.productService.postProduct(addProduct).pipe(takeWhile(() => this.isAlive)).subscribe( () => {
-        this.router.navigate(['/products'])
+        this.router.navigateTo(AppRoutes.Products)
       });
   }
 
-  back(){
-    this.router.navigate(['/products']);
+  onBack(){
+    this.router.navigateTo(AppRoutes.Products);
   }
 
   ngOnDestroy() {

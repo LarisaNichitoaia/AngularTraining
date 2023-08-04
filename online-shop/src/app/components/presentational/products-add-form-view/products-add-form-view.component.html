@@ -5,35 +5,35 @@
 <body>
     <h1> Add product</h1>
     <div class="form-content">
-        <form *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <form *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="this.createProduct.emit(productForm.value)">
             <div class="form-group">
-                <label for="productName">Name:</label>
-                <input type="text" id="productName" formControlName="name">
+                <label class="label" for="productName">Name:</label>
+                <input class="input" type="text" id="productName" formControlName="name">
             </div>
 
             <div class="form-group">
-                <label for="productCategory">Category:</label>
-                <input type="text" id="productCategory" formControlName="category">
+                <label class="label" for="productCategory">Category:</label>
+                <input class="input" type="text" id="productCategory" formControlName="category">
             </div>
 
             <div class="form-group">
-                <label for="productImage">Image URL:</label>
-                <input type="text" id="productImage" formControlName="image">
+                <label class="label" for="productImage">Image URL:</label>
+                <input class="input" type="text" id="productImage" formControlName="image">
             </div>
 
             <div class="form-group">
-                <label for="productPrice">Price:</label>
-                <input type="number" id="productPrice" formControlName="price">
+                <label class="label" for="productPrice">Price:</label>
+                <input class="input" type="number" id="productPrice" formControlName="price">
             </div>
 
             <div class="form-group">
-                <label for="productDescription">Description:</label>
-                <textarea id="productDescription" formControlName="description"></textarea>
+                <label class="label" for="productDescription">Description:</label>
+                <textarea class="input" id="productDescription" formControlName="description"></textarea>
             </div>
 
             <div class="form-group">
-                <button type="submit" [disabled]="!productForm.valid">Save</button>
-                <button (click)="goBack()">Cancel</button>
+                <button class="button" type="submit" [disabled]="!productForm.valid">Save</button>
+                <button class="button" (click)="this.back.emit()">Cancel</button>
             </div>
         </form>
     </div>

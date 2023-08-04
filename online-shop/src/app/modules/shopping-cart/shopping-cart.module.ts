@@ -20,6 +20,6 @@ import { ShoppingCartService } from './services/shopping-cart.service';
   exports: [
     ShoppingCartDetailsComponent
   ],
-  providers: [ShoppingCartService]
+  providers: []
 })
 export class ShoppingCartModule { }

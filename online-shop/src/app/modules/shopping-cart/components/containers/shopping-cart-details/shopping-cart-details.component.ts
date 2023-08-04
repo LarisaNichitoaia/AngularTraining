@@ -30,9 +30,11 @@ export class ShoppingCartDetailsComponent {
         customerId: customerId,
         products: productAndQuantity
       }
-      this.orderService.saveOrder(this.order).subscribe(data=>console.log(data));
+      this.orderService.saveOrder(this.order).subscribe(
+        ()=>productAndQuantity.forEach(product => this.removeFromCart(product.productId))
+        );
       alert("Order created!");
-      productAndQuantity.forEach(product => this.removeFromCart(product.productId));
+      
     }
   }
 }

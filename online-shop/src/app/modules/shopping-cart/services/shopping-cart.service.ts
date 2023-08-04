@@ -9,24 +9,21 @@ export class ShoppingCartService {
 
   constructor() { }
 
-  getProductsFromCart(): ProductWithQuantities[]|undefined{
+  getProductsFromCart(): ProductWithQuantities[] | undefined {
     return this.shoppingCart;
   }
 
-  addToCart(productWithQuantity: ProductWithQuantities){
-    const index = this.shoppingCart?.findIndex(product => product.id === productWithQuantity.id);
-    if(index!==-1){
-      this.shoppingCart[index].quantity = this.shoppingCart[index].quantity + productWithQuantity.quantity;
-    }
-    else{
-      this.shoppingCart?.push(productWithQuantity);
+  addToCart(productWithQuantity: ProductWithQuantities) {
+    const productInCart = this.shoppingCart.find(product => product.id === productWithQuantity.id);
+
+    if (productInCart) {
+      productInCart.quantity += productWithQuantity.quantity;
+    } else {
+      this.shoppingCart.push(productWithQuantity);
     }
   }
 
-  removeFromCart(productId: string){
-    const index = this.shoppingCart?.findIndex(product => product.id === productId);
-    if(index!==-1){
-      this.shoppingCart.splice(index,1);
-    }
+  removeFromCart(productId: string) {
+    this.shoppingCart = this.shoppingCart.filter(product => product.id !== productId);
   }
 }

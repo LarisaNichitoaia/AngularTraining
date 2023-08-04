@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Observable, takeWhile } from 'rxjs';
+import { AppRoutes } from 'src/app/modules/shared/routs/route.enum';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from '../../../modules/shared/types/products.types';
 
@@ -15,22 +16,24 @@ export class ProductsListComponent {
   products!: Product[];
   productId$!: Observable<String>;
 
-  constructor(private router: Router, private productService: ProductsService) {}
+  constructor(private router: NavigationService, private productService: ProductsService) {}
 
   ngOnInit() {
-    this.productService.getProducts().pipe(takeWhile(() => this.isAlive)).subscribe((data)=>this.products = data);    
+    this.productService.getProducts().pipe(takeWhile(() => this.isAlive)).subscribe(
+      (data)=>this.products = data
+      );    
   }
 
   navigateToProductDetail(productId: String) {
-    this.router.navigate(['/product-details', productId]);
+    this.router.navigateToWithParams(AppRoutes.ProductDetails, productId);
   }
 
   navigateToShoppingCart() {
-    this.router.navigate(['/shopping-cart'])
+    this.router.navigateTo(AppRoutes.ShoppingCart);
   }
 
   navigateToAddForm(){
-    this.router.navigate(['/product-add-form'])
+    this.router.navigateTo(AppRoutes.ProductAddForm);
   }
 
   ngOnDestroy() {

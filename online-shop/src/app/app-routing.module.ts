@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: '', canActivate: [authGuard], children: [{ path: 'products', component: ProductsListComponent },
+    path: '', canActivate: [authGuard], children: [
+    { path: 'products', component: ProductsListComponent },
     { path: 'product-details/:id', component: ProductsDetailsComponent },
     { path: 'shopping-cart', component: ShoppingCartDetailsComponent },
     { path: 'product-form/:id', component: ProductsFormComponent },
