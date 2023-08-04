@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Login } from '../modules/shared/types/login.types';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.prods';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { AccesToken } from '../modules/shared/types/acces-token.types';
 
